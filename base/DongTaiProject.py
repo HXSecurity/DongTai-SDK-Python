@@ -3,10 +3,9 @@ Author: 饕餮
 Date: 2021-12-23 14:50:44
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-23 15:03:40
+LastEditTime: 2021-12-23 15:07:02
 Description: 动态项目对象
 '''
-import json
 from .BaseObejct import BaseObject
 
 class VulCount(BaseObject):
@@ -57,3 +56,15 @@ class DongTaiProject(BaseObject):
     @property
     def Owner(self):
         return self.TryGetValue("owner_count")
+
+    @property
+    def LatestTime(self):
+        return self.TryGetValue("latest_time")
+
+    @property
+    def AgentLanguage(self):
+        return self.TryGetValue("agent_language")
+
+    @property
+    def VulValidation(self):
+        return self.TryGetValue("vul_validation")
