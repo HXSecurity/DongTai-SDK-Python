@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:27:00
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-23 19:33:39
+LastEditTime: 2021-12-23 20:41:18
 Description: file content
 '''
 import json,requests
@@ -35,3 +35,21 @@ class DongTaiApi:
         if pName is not None:
             data["name"] = pName
         return self.GetResponse("/projects","GET",data)
+
+    #获取项目版本列表
+    def GetProjectVerList(self,projectId):
+        return self.GetResponse(f"/project/version/list/{projectId}")
+
+    #项目版本添加
+    def AddProjectVersion(self,projectId,verName,description,isEdit=True):
+        data = {
+            "version_name": verName,
+            "description": description,
+            "isEdit": isEdit,
+            "project_id": projectId
+        }
+        return self.GetResponse("/project/version/add","POST",data=json.dumps(data))
+
+    #项目搜索
+    def SearchProject(self,projectId):
+        return self.GetResponse(f"/api/v1/projects/summary/{projectId}")

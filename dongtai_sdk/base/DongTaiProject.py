@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:50:44
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-23 15:07:02
+LastEditTime: 2021-12-23 20:54:08
 Description: 动态项目对象
 '''
 from .BaseObejct import BaseObject
@@ -23,6 +23,26 @@ class VulCount(BaseObject):
     @property
     def Name(self):
         return self.TryGetValue("name")
+
+class DongTaiProjectVersion(BaseObject):
+    def __init__(self,jsonData):
+        self.ObjectData = jsonData
+
+    @property
+    def VersionId(self):
+        return self.TryGetValue("version_id")
+
+    @property
+    def VersionName(self):
+        return self.TryGetValue("version_name")
+
+    @property
+    def CurrentVersion(self):
+        return self.TryGetValue("current_version")
+
+    @property
+    def Description(self):
+        return self.TryGetValue("description")
 
 class DongTaiProject(BaseObject):
     def __init__(self,jsonData):

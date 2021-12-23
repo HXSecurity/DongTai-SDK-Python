@@ -3,10 +3,11 @@ Author: 饕餮
 Date: 2021-12-23 14:49:05
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-23 14:49:05
+LastEditTime: 2021-12-23 21:05:50
 Description: 通用基类
 '''
 import json
+
 class BaseObject:
     def __init__(self):
         self.ObjectData = {}
@@ -49,3 +50,15 @@ class BaseObject:
         except ValueError as e:
             return False
         return True
+
+class DongTaiError(BaseObject):
+    def __init__(self,jsonData):
+        self.ObjectData = jsonData
+
+    @property
+    def Status(self):
+        return self.TryGetValue("status")
+
+    @property
+    def ErrorMsg(self):
+        return self.TryGetValue("msg")
