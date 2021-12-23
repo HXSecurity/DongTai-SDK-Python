@@ -3,13 +3,13 @@ Author: 饕餮
 Date: 2021-12-23 14:27:00
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-23 14:48:19
+LastEditTime: 2021-12-23 19:33:39
 Description: file content
 '''
 import json,requests
 class DongTaiApi:
-    def __init__(self):
-        with open('config.json', 'r') as config_f:
+    def __init__(self,configPath='config.json'):
+        with open(configPath, 'r') as config_f:
             Config = json.load(config_f)
             DongTaiConfig = Config['DongTai']
             self.Token = DongTaiConfig["token"]
