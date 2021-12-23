@@ -3,7 +3,7 @@
  * @Date: 2021-12-23 14:25:35
  * @version: 
  * @LastEditors: 饕餮
- * @LastEditTime: 2021-12-23 19:37:32
+ * @LastEditTime: 2021-12-23 19:50:44
  * @Description: How to use
 -->
 # DongTai-SDK-Python
@@ -21,5 +21,5 @@ config.json
 
 2.how to use:
 
-from dongtai_sdk import DongTai
+from dongtai_sdk.DongTai import DongTai
 dongTaiSdk = DongTai("config.json")
