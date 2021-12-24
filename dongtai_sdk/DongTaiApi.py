@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:27:00
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-24 11:41:46
+LastEditTime: 2021-12-24 12:04:58
 Description: file content
 '''
 import json,requests
@@ -80,7 +80,7 @@ class DongTaiApi:
             data["state"] = state
         if token is not None:
             data["token"] = token
-        return self.GetResponse("/agent","GET",data)
+        return self.GetResponse("/agents","GET",data)
 
     #启动探针
     def StartAgent(self,agentId):
