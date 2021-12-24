@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:50:44
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-24 10:05:20
+LastEditTime: 2021-12-24 10:44:03
 Description: 动态项目对象
 '''
 from .BaseObejct import BaseObject
@@ -143,5 +143,7 @@ class DongTaiProject(BaseObject):
             tmpObject = DayNumber(tmpData)
             returnData.append(tmpObject)
         return returnData
+
+    #TODO:type_summary
 
     
