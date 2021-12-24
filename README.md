@@ -3,7 +3,7 @@
  * @Date: 2021-12-23 14:25:35
  * @version: 
  * @LastEditors: 饕餮
- * @LastEditTime: 2021-12-24 12:58:58
+ * @LastEditTime: 2021-12-24 13:00:32
  * @Description: How to use
 -->
 # DongTai-SDK-Python
@@ -21,7 +21,7 @@
 
 # Quick start
 
-1.your need a config file
+## You need a config file
 
 config.json
 ```json
@@ -33,14 +33,14 @@ config.json
 }
 ```
 
-2.how to use:
+## How to use:
 ```python
 from dongtai_sdk.DongTai import DongTai
 dongTaiSdk = DongTai("config.json")
 ```
 
-3.now support function
-## Project
+## Support function (Continuous updating)
+### Project
 ```python
 GetProjectList(self,page,pageSize,name=None)
 GetProjectVerList(self,projectId)
@@ -48,7 +48,7 @@ AddProjectVersion(self,projectId,verName,description,isEdit=True)
 SearchProject(self,projectId)
 ```
 
-## Agent
+### Agent
 ```python
 DeleteAgent(self,agentId)
 StartAgent(self,agentId)
