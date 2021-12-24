@@ -129,3 +129,6 @@ dmypy.json
 .pyre/
 # pypi config
 .pypirc
+
+# PyCharm
+.idea

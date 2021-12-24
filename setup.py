@@ -12,7 +12,7 @@ import sys
 
 setup(
     name="dongtai_sdk",
-    version="0.0.2",
+    version="latest",
     author="spensercai",
     author_email="spensercai@gmail.com",
     description="DongTai SDK",
