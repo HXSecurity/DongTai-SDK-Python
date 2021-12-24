@@ -1,2 +1,2 @@
-requests==2.25.1
-setuptools==47.1.0
+requests>=2.25.1
+setuptools>=47.1.0
