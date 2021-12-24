@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:27:00
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-24 12:13:57
+LastEditTime: 2021-12-24 12:22:43
 Description: file content
 '''
 import json,requests
@@ -49,7 +49,7 @@ class DongTaiApi:
             "isEdit": isEdit,
             "project_id": projectId
         }
-        return self.GetResponse("/project/version/add","POST",tmpData=json.dumps(data))
+        return self.GetResponse("/project/version/add","POST",data)
 
     #项目搜索
     def SearchProject(self,projectId):
@@ -66,7 +66,7 @@ class DongTaiApi:
             "id":agentId,
             "alias":alias
         }
-        return self.GetResponse("/agent/alias/modified","POST",tmpData=json.dumps(data))
+        return self.GetResponse("/agent/alias/modified","POST",data)
     
     #获取探针列表
     def GetAgentList(self,page=1,pageSize=50,projectName=None,state=None,token=None):
@@ -87,14 +87,14 @@ class DongTaiApi:
         data = {
             "id":agentId
         }
-        return self.GetResponse("/agent/start","GET",data)
+        return self.GetResponse("/agent/start","POST",data)
 
     #停止探针
     def StopAgent(self,agentId):
         data = {
             "id":agentId
         }
-        return self.GetResponse("/agent/stop","GET",data)
+        return self.GetResponse("/agent/stop","POST",data)
 
     #探针详情
     def GetAgentDetail(self,agentId):
