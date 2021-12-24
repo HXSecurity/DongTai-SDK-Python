@@ -3,7 +3,7 @@
  * @Date: 2021-12-23 14:25:35
  * @version: 
  * @LastEditors: 饕餮
- * @LastEditTime: 2021-12-24 13:03:46
+ * @LastEditTime: 2021-12-24 14:58:54
  * @Description: How to use
 -->
 # DongTai-SDK-Python
@@ -53,4 +53,7 @@ dongTaiSdk.SearchProject(projectId)
 dongTaiSdk.DeleteAgent(agentId)
 dongTaiSdk.StartAgent(agentId)
 dongTaiSdk.StopAgent(agentId)
+dongTaiSdk.ModifiedAgentAlias(agentId,alias)
+dongTaiSdk.GetAgentDetail(agentId)
+dongTaiSdk.GetAgentList(page=1,pageSize=50,projectName=None,state=None,token=None)
 ```
