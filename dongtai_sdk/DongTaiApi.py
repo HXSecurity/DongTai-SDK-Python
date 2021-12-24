@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:27:00
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-23 20:41:18
+LastEditTime: 2021-12-24 11:08:06
 Description: file content
 '''
 import json,requests
@@ -26,6 +26,7 @@ class DongTaiApi:
             rep = requests.post(self.GetApiFileUrl(url), data=tmpData,headers=requestHeader)
         return json.loads(rep.text)
 
+    #[Project Function]
     #获取项目列表
     def GetProjectList(self,page=1,pageSize=50,pName=None):
         data = {
@@ -53,3 +54,22 @@ class DongTaiApi:
     #项目搜索
     def SearchProject(self,projectId):
         return self.GetResponse(f"/api/v1/projects/summary/{projectId}")
+
+    #[Agent Function]
+    def DeleteAgent(self,agentId):
+        pass
+
+    def ModifiedAgentAlias(self,agentId,alias):
+        pass
+
+    def GetAgentList(self,page=1,pageSize=50,projectName=None,state=None,token=None):
+        pass
+
+    def StartAgent(self,agentId):
+        pass
+
+    def StopAgent(self,agentId):
+        pass
+
+    def GetAgentDetail(self,agentId):
+        pass
