@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 15:10:01
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-24 10:41:44
+LastEditTime: 2021-12-24 12:52:57
 Description: Main
 '''
 from .base.DongTaiProject import DongTaiProject,DongTaiProjectVersion
@@ -14,6 +14,7 @@ class DongTai:
     def __init__(self,configPath='config.json'):
         self.dongTaiApi = DongTaiApi(configPath)
 
+    #[Project Function]
     def GetProjectList(self,page,pageSize,name=None):
         returnData = []
         repData = self.dongTaiApi.GetProjectList(page,pageSize,name)
@@ -60,3 +61,39 @@ class DongTai:
             errorObject = DongTaiError(errorMsg)
             return errorObject
 
+    #[Agent Function]
+    def DeleteAgent(self,agentId):
+        repData = self.dongTaiApi.DeleteAgent(agentId)
+        if repData["status"] == 201:
+            return True
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    def StartAgent(self,agentId):
+        repData = self.dongTaiApi.StartAgent(agentId)
+        if repData["status"] == 201:
+            return True
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    def StopAgent(self,agentId):
+        repData = self.dongTaiApi.StartAgent(agentId)
+        if repData["status"] == 201:
+            return True
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    def ModifiedAgentAlias(self,agentId,alias):
+        pass
+
+    def GetAgentList(self,page=1,pageSize=50,projectName=None,state=None,token=None):
+        pass
+
+    def GetAgentDetail(self,agentId):
+        pass
