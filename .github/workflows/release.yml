@@ -24,10 +24,10 @@ jobs:
         pip install setuptools wheel twine
 
     - id: release
-        run: |
-          TAG_NAME=${{ github.event.release.tag_name }}
-          ID=`echo ${TAG_NAME##v}`
-          echo "::set-output name=VERSION::$ID"
+      run: |
+        TAG_NAME=${{ github.event.release.tag_name }}
+        ID=`echo ${TAG_NAME##v}`
+        echo "::set-output name=VERSION::$ID"
 
     - name: Build and publish
       env:
