@@ -3,7 +3,7 @@
  * @Date: 2021-12-23 14:25:35
  * @version: 
  * @LastEditors: 饕餮
- * @LastEditTime: 2021-12-24 13:00:32
+ * @LastEditTime: 2021-12-24 13:03:46
  * @Description: How to use
 -->
 # DongTai-SDK-Python
@@ -42,15 +42,15 @@ dongTaiSdk = DongTai("config.json")
 ## Support function (Continuous updating)
 ### Project
 ```python
-GetProjectList(self,page,pageSize,name=None)
-GetProjectVerList(self,projectId)
-AddProjectVersion(self,projectId,verName,description,isEdit=True)
-SearchProject(self,projectId)
+dongTaiSdk.GetProjectList(page,pageSize,name=None)
+dongTaiSdk.GetProjectVerList(projectId)
+dongTaiSdk.AddProjectVersion(projectId,verName,description,isEdit=True)
+dongTaiSdk.SearchProject(projectId)
 ```
 
 ### Agent
 ```python
-DeleteAgent(self,agentId)
-StartAgent(self,agentId)
-StopAgent(self,agentId)
+dongTaiSdk.DeleteAgent(agentId)
+dongTaiSdk.StartAgent(agentId)
+dongTaiSdk.StopAgent(agentId)
 ```
