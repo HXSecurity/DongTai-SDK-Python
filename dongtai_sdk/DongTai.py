@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 15:10:01
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-23 21:08:50
+LastEditTime: 2021-12-24 10:08:23
 Description: Main
 '''
 from .base.DongTaiProject import DongTaiProject,DongTaiProjectVersion
@@ -44,6 +44,16 @@ class DongTai:
         repData = self.dongTaiApi.AddProjectVersion(projectId,verName,description,isEdit)
         if repData["status"] == 201:
             tmpObject = DongTaiProjectVersion(repData["data"])
+            return tmpObject
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    def SearchProject(self,projectId):
+        repData = self.dongTaiApi.SearchProject(projectId)
+        if repData["status"] == 201:
+            tmpObject = DongTaiProject(repData["data"])
             return tmpObject
         else:
             errorMsg = {"status":repData["status"],"msg":repData["msg"]}
