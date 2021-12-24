@@ -3,10 +3,11 @@ Author: 饕餮
 Date: 2021-12-23 15:10:01
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-24 12:52:57
+LastEditTime: 2021-12-24 14:56:01
 Description: Main
 '''
 from .base.DongTaiProject import DongTaiProject,DongTaiProjectVersion
+from .base.DongTaiAgent import DongTaiAgent
 from .DongTaiApi import DongTaiApi
 from .base.BaseObejct import DongTaiError
 
@@ -90,10 +91,36 @@ class DongTai:
             return errorObject
 
     def ModifiedAgentAlias(self,agentId,alias):
-        pass
-
-    def GetAgentList(self,page=1,pageSize=50,projectName=None,state=None,token=None):
-        pass
+        repData = self.dongTaiApi.ModifiedAgentAlias(agentId,alias)
+        if repData["status"] == 201:
+            return True
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
 
     def GetAgentDetail(self,agentId):
-        pass
+        repData = self.dongTaiApi.GetAgentDetail(agentId)
+        if repData["status"] == 201:
+            agentObject = DongTaiAgent(repData["data"]["agent"])
+            return agentObject
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    def GetAgentList(self,page=1,pageSize=50,projectName=None,state=None,token=None):
+        returnData = []
+        repData = self.dongTaiApi.GetAgentList(page,pageSize,projectName,state,token)
+        if repData["status"] == 201:
+            tmpDataList = repData["data"]
+            for tmpData in tmpDataList:
+                tmpObject = DongTaiAgent(tmpData)
+                returnData.append(tmpObject)
+            return returnData
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    
