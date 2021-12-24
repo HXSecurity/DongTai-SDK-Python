@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:50:44
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-24 10:44:03
+LastEditTime: 2021-12-24 10:49:49
 Description: 动态项目对象
 '''
 from .BaseObejct import BaseObject
@@ -51,6 +51,22 @@ class DayNumber(BaseObject):
     @property
     def DayNum(self):
         return self.TryGetValue("day_num")
+
+class TypeSummary(BaseObject):
+    def __init__(self,jsonData):
+        self.ObjectData = jsonData
+
+    @property
+    def TypeName(self):
+        return self.TryGetValue("type_name")
+
+    @property
+    def TypeCount(self):
+        return self.TryGetValue("type_count")
+
+    @property
+    def TypeLevel(self):
+        return self.TryGetValue("type_level")
 
 class DongTaiProjectVersion(BaseObject):
     def __init__(self,jsonData):
@@ -144,6 +160,12 @@ class DongTaiProject(BaseObject):
             returnData.append(tmpObject)
         return returnData
 
-    #TODO:type_summary
-
+    @property
+    def TypeSummary(self):
+        tmpDataList = self.TryGetValue("type_summary")
+        returnData = []
+        for tmpData in tmpDataList:
+            tmpObject = TypeSummary(tmpData)
+            returnData.append(tmpObject)
+        return returnData
     
