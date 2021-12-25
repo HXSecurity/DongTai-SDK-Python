@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 15:10:01
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-25 15:23:55
+LastEditTime: 2021-12-25 15:51:12
 Description: Main
 '''
 from .base.DongTaiProject import DongTaiProject,DongTaiProjectVersion
@@ -51,6 +51,7 @@ class DongTai:
             errorObject = DongTaiError(errorMsg)
             return errorObject
 
+    #TODO:获取项目版本详细信息如果参数不填自动填写原来的值
     def UpdateProjectVersion(self,projectId,versionName,versionId,description,currentVersion=1,isEdit=True):
         repData = self.dongTaiApi.UpdateProjectVersion(projectId,versionName,versionId,description,currentVersion,isEdit)
         if repData["status"] == 201:
