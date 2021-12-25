@@ -65,5 +65,5 @@ dongTaiSdk.GetAgentList(page=1,pageSize=50,projectName=None,state=None,token=Non
 ### Sca
 ```python
 dongTaiSdk.GetScaDetail(scaId)
-GetScaList(page=1,pageSize=50,keyword=None,language=None,level=None,order=None,projectId=None,projectName=None,versionId=None)
+dongTaiSdk.GetScaList(page=1,pageSize=50,keyword=None,language=None,level=None,order=None,projectId=None,projectName=None,versionId=None)
 ```
