@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-24 10:56:26
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-24 14:48:42
+LastEditTime: 2021-12-25 17:22:07
 Description: Agent Object
 '''
 import json
@@ -21,6 +21,10 @@ class DongTaiAgent(BaseObject):
     def Token(self):
         return self.TryGetValue("token")
 
+    @property
+    def ShortName(self):
+        return self.TryGetValue("short_name")
+        
     @property
     def Alias(self):
         return self.TryGetValue("alias")

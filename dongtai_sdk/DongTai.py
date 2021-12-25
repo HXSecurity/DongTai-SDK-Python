@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 15:10:01
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-25 16:09:46
+LastEditTime: 2021-12-25 17:23:57
 Description: Main
 '''
 from .base.DongTaiProject import DongTaiProject,DongTaiProjectVersion
@@ -87,6 +87,20 @@ class DongTai:
             tmpObject = DongTaiProject(repData["data"])
             #TODO:通过参数判断是否加载完整Agent信息
             return tmpObject
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    def GetProjectAgentList(self,projectId):
+        returnData = []
+        repData = self.dongTaiApi.GetProjectAgentList(projectId)
+        if repData["status"] == 201:
+            tmpDataList = repData["data"]
+            for tmpData in tmpDataList:
+                tmpObect = DongTaiAgent(tmpData)
+                returnData.append(tmpObect)
+            return returnData
         else:
             errorMsg = {"status":repData["status"],"msg":repData["msg"]}
             errorObject = DongTaiError(errorMsg)

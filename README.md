@@ -3,7 +3,7 @@
  * @Date: 2021-12-23 14:25:35
  * @version: 
  * @LastEditors: 饕餮
- * @LastEditTime: 2021-12-25 15:25:25
+ * @LastEditTime: 2021-12-25 17:24:24
  * @Description: How to use
 -->
 # DongTai-SDK-Python
@@ -48,6 +48,8 @@ dongTaiSdk.AddProjectVersion(projectId,verName,description,isEdit=True)
 dongTaiSdk.SearchProject(projectId)
 dongTaiSdk.DeleteProject(projectId)
 dongTaiSdk.UpdateProjectVersion(projectId,versionName,versionId,description,currentVersion=1,isEdit=True)
+dongTaiSdk.GetProjectDetail(projectId)
+dongTaiSdk.GetProjectAgentList(projectId)
 ```
 
 ### Agent (Completed)
