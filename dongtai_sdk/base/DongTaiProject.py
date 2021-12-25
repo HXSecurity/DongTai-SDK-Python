@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:50:44
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-24 10:49:49
+LastEditTime: 2021-12-25 16:06:03
 Description: 动态项目对象
 '''
 from .BaseObejct import BaseObject
@@ -19,6 +19,18 @@ class VulCount(BaseObject):
     @property
     def Total(self):
         return self.TryGetValue("total")
+
+    @property
+    def Name(self):
+        return self.TryGetValue("name")
+
+class AgentBaseInfo(BaseObject):
+    def __init__(self,jsonData):
+        self.ObjectData = jsonData
+
+    @property
+    def Id(self):
+        return self.TryGetValue("id")
 
     @property
     def Name(self):
@@ -168,4 +180,17 @@ class DongTaiProject(BaseObject):
             tmpObject = TypeSummary(tmpData)
             returnData.append(tmpObject)
         return returnData
+
+    @property
+    def ScanId(self):
+        return self.TryGetValue("scan_id")
     
+    #通过参数判断是否要加载完整的Agent信息
+    @property
+    def Agents(self):
+        tmpDataList = self.TryGetValue("agents")
+        returnData = []
+        for tmpData in tmpDataList:
+            tmpObject = AgentBaseInfo(tmpData)
+            returnData.append(tmpObject)
+        return returnData
