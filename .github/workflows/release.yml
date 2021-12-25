@@ -1,4 +1,4 @@
-name: Publish DongTak-SDK-Python
+name: Publish DongTai-SDK-Python
 
 on:
   release:
