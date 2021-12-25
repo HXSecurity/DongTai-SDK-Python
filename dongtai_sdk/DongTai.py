@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 15:10:01
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-24 14:56:01
+LastEditTime: 2021-12-25 15:23:55
 Description: Main
 '''
 from .base.DongTaiProject import DongTaiProject,DongTaiProjectVersion
@@ -37,6 +37,24 @@ class DongTai:
                 tmpObject = DongTaiProjectVersion(tmpData)
                 returnData.append(tmpObject)
             return returnData
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    def DeleteProject(self,projectId):
+        repData = self.dongTaiApi.DeleteProject(projectId)
+        if repData["status"] == 201:
+            return True
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    def UpdateProjectVersion(self,projectId,versionName,versionId,description,currentVersion=1,isEdit=True):
+        repData = self.dongTaiApi.UpdateProjectVersion(projectId,versionName,versionId,description,currentVersion,isEdit)
+        if repData["status"] == 201:
+            return True
         else:
             errorMsg = {"status":repData["status"],"msg":repData["msg"]}
             errorObject = DongTaiError(errorMsg)
