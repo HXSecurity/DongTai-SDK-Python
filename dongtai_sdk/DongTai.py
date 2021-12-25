@@ -3,11 +3,12 @@ Author: 饕餮
 Date: 2021-12-23 15:10:01
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-25 17:23:57
+LastEditTime: 2021-12-25 21:32:29
 Description: Main
 '''
 from .base.DongTaiProject import DongTaiProject,DongTaiProjectVersion
 from .base.DongTaiAgent import DongTaiAgent
+from .base.DongTaiSca import DongTaiSca
 from .DongTaiApi import DongTaiApi
 from .base.BaseObejct import DongTaiError
 
@@ -162,6 +163,31 @@ class DongTai:
                 tmpObject = DongTaiAgent(tmpData)
                 returnData.append(tmpObject)
             return returnData
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    #[Sca Function]
+    def GetScaList(self,page=1,pageSize=50,keyword=None,language=None,level=None,order=None,projectId=None,projectName=None,versionId=None):
+        returnData = []
+        repData = self.dongTaiApi.GetScaList(self,page,pageSize,keyword,language,level,order,projectId,projectName,versionId)
+        if repData["status"] == 201:
+            tmpDataList = repData["data"]
+            for tmpData in tmpDataList:
+                tmpObject = DongTaiSca(tmpData)
+                returnData.append(tmpObject)
+            return returnData
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+
+    def GetScaDetail(self,scaId):
+        repData = self.dongTaiApi.GetScaDetail(scaId)
+        if repData["status"] == 201:
+            scaObject = DongTaiSca(repData["data"])
+            return scaObject
         else:
             errorMsg = {"status":repData["status"],"msg":repData["msg"]}
             errorObject = DongTaiError(errorMsg)
