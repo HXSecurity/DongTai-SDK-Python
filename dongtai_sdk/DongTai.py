@@ -3,12 +3,12 @@ Author: 饕餮
 Date: 2021-12-23 15:10:01
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-25 21:32:29
+LastEditTime: 2021-12-27 09:59:24
 Description: Main
 '''
 from .base.DongTaiProject import DongTaiProject,DongTaiProjectVersion
 from .base.DongTaiAgent import DongTaiAgent
-from .base.DongTaiSca import DongTaiSca
+from .base.DongTaiSca import DongTaiSca, ScaSummary
 from .DongTaiApi import DongTaiApi
 from .base.BaseObejct import DongTaiError
 
@@ -193,4 +193,12 @@ class DongTai:
             errorObject = DongTaiError(errorMsg)
             return errorObject
 
-    
+    def GetScaSummary(self,page=1,pageSize=50,keyword=None,language=None,level=None,order=None,projectId=None,projectName=None,versionId=None):
+        repData = self.dongTaiApi.GetScaSummary(page,pageSize,keyword,language,level,order,projectId,projectName,versionId)
+        if repData["status"] == 201:
+            scaSummary = ScaSummary(repData["data"])
+            return scaSummary
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject

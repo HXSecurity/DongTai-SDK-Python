@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:49:05
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-23 21:05:50
+LastEditTime: 2021-12-27 10:01:53
 Description: 通用基类
 '''
 import json
@@ -62,3 +62,19 @@ class DongTaiError(BaseObject):
     @property
     def ErrorMsg(self):
         return self.TryGetValue("msg")
+
+class ProjectSummary(BaseObject):
+    def __init__(self,jsonData):
+        self.ObjectData = jsonData
+    
+    @property
+    def ProjectName(self):
+        return self.TryGetValue("project_name")
+
+    @property
+    def Count(self):
+        return self.TryGetValue("count")
+
+    @property
+    def Id(self):
+        return self.TryGetValue("id")

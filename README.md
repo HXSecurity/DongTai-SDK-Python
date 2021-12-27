@@ -3,7 +3,7 @@
  * @Date: 2021-12-23 14:25:35
  * @version: 
  * @LastEditors: 饕餮
- * @LastEditTime: 2021-12-25 21:32:18
+ * @LastEditTime: 2021-12-27 09:59:59
  * @Description: How to use
 -->
 # DongTai-SDK-Python
@@ -62,8 +62,9 @@ dongTaiSdk.GetAgentDetail(agentId)
 dongTaiSdk.GetAgentList(page=1,pageSize=50,projectName=None,state=None,token=None)
 ```
 
-### Sca
+### Sca (Completed)
 ```python
 dongTaiSdk.GetScaDetail(scaId)
 dongTaiSdk.GetScaList(page=1,pageSize=50,keyword=None,language=None,level=None,order=None,projectId=None,projectName=None,versionId=None)
+dongTaiSdk.GetScaSummary(page=1,pageSize=50,keyword=None,language=None,level=None,order=None,projectId=None,projectName=None,versionId=None)
 ```

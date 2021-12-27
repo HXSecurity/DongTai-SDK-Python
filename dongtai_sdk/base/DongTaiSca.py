@@ -3,11 +3,11 @@ Author: 饕餮
 Date: 2021-12-24 10:57:03
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-25 21:21:59
+LastEditTime: 2021-12-27 10:02:24
 Description: Sca Object
 '''
 import json
-from .BaseObejct import BaseObject
+from .BaseObejct import BaseObject,ProjectSummary
 
 class ScaVulnReference(BaseObject):
     def __init__(self,jsonData):
@@ -63,6 +63,34 @@ class ScaVuln(BaseObject):
                 tmpObject = ScaVulnReference(tmpItem)
                 returnData.append(tmpObject)
         return returnData
+
+class ScaLanguage(BaseObject):
+    def __init__(self,jsonData):
+        self.ObjectData = jsonData
+
+    @property
+    def Language(self):
+        return self.TryGetValue("language")
+
+    @property
+    def Count(self):
+        return self.TryGetValue("count")
+
+class ScaLevel(BaseObject):
+    def __init__(self,jsonData):
+        self.ObjectData = jsonData
+
+    @property
+    def Level(self):
+        return self.TryGetValue("level")
+
+    @property
+    def Count(self):
+        return self.TryGetValue("count")
+
+    @property
+    def LevelId(self):
+        return self.TryGetValue("level_id")
 
 class DongTaiSca(BaseObject):
     def __init__(self,jsonData):
@@ -127,5 +155,39 @@ class DongTaiSca(BaseObject):
         if tmpDataList is not None:
             for tmpData in tmpDataList:
                 tmpObject = ScaVuln(tmpData)
+                returnData.append(tmpObject)
+        return returnData
+
+class ScaSummary(BaseObject):
+    def __init__(self,jsonData):
+        self.ObjectData = jsonData
+
+    @property
+    def Language(self):
+        returnData = []
+        tmpDataList = self.TryGetValue("language")
+        if tmpDataList is not None:
+            for tmpData in tmpDataList:
+                tmpObject = ScaLanguage(tmpData)
+                returnData.append(tmpObject)
+        return returnData
+
+    @property
+    def Level(self):
+        returnData = []
+        tmpDataList = self.TryGetValue("level")
+        if tmpDataList is not None:
+            for tmpData in tmpDataList:
+                tmpObject = ScaLevel(tmpData)
+                returnData.append(tmpObject)
+        return returnData
+
+    @property
+    def Projects(self):
+        returnData = []
+        tmpDataList = self.TryGetValue("projects")
+        if tmpDataList is not None:
+            for tmpData in tmpDataList:
+                tmpObject = ProjectSummary(tmpData)
                 returnData.append(tmpObject)
         return returnData
