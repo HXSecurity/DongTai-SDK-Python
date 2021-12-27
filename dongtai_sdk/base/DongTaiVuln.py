@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-24 10:56:10
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-27 18:34:21
+LastEditTime: 2021-12-27 18:55:58
 Description: Vuln Object
 '''
 import json
@@ -39,8 +39,12 @@ class VulnLevel(BaseObject):
         return self.TryGetValue("level_id")
 
 class VulnSummary(BaseObject):
-    def __init__(self,jsonData):
+    WithOutRiskLevel = ["无风险"]
+
+    def __init__(self,jsonData,withOutRiskLevel:list=None):
         self.ObjectData = jsonData
+        if withOutRiskLevel is not None:
+            self.WithOutRiskLevel = withOutRiskLevel
 
     @property
     def Language(self) -> List[LanguageSummary]:
@@ -94,10 +98,18 @@ class VulnSummary(BaseObject):
             return None
 
     @property
+    def TipsRisk(self):
+        tmpData = [tmpLevel for tmpLevel in self.Level if tmpLevel.Level == "提示"]
+        if len(tmpData) > 0:
+            return tmpData[0]
+        else:
+            return None
+
+    @property
     def Count(self):
         tmpCount = 0
         for tmpLevel in self.Level:
-            if tmpLevel.Level not in ["无风险","提示"]:
+            if tmpLevel.Level not in self.WithOutRiskLevel:
                 tmpCount += tmpLevel.Count
         return tmpCount
 
