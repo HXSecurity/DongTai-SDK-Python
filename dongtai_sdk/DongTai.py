@@ -3,9 +3,10 @@ Author: 饕餮
 Date: 2021-12-23 15:10:01
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-27 09:59:24
+LastEditTime: 2021-12-27 18:35:26
 Description: Main
 '''
+from .base.DongTaiVuln import VulnSummary
 from .base.DongTaiProject import DongTaiProject,DongTaiProjectVersion
 from .base.DongTaiAgent import DongTaiAgent
 from .base.DongTaiSca import DongTaiSca, ScaSummary
@@ -202,3 +203,15 @@ class DongTai:
             errorMsg = {"status":repData["status"],"msg":repData["msg"]}
             errorObject = DongTaiError(errorMsg)
             return errorObject
+
+    #[Vuln Function]
+    def GetVulnSummary(self,projectId=None,language=None,level=None,order=None,projectName=None,status=None,type=None,url=None,versionId=None,statusId=None):
+        repData = self.dongTaiApi.GetVulnSummary(projectId,language,level,order,projectName,status,type,url,versionId,statusId)
+        if repData["status"] == 201:
+            vulnSummary = VulnSummary(repData["data"])
+            return vulnSummary
+        else:
+            errorMsg = {"status":repData["status"],"msg":repData["msg"]}
+            errorObject = DongTaiError(errorMsg)
+            return errorObject
+    

@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:27:00
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-27 13:15:27
+LastEditTime: 2021-12-27 17:03:50
 Description: file content
 '''
 import json,requests
@@ -187,11 +187,12 @@ class DongTaiApi:
 
     #[Vuln Function]
     #漏洞概览
-    def GetVulnSummary(self,projectId,language=None,level=None,order=None,projectName=None,status=None,type=None,url=None,versionId=None,statusId=1):
-        data = {
-            "project_id":projectId,
-            "status_id":statusId
-        }
+    def GetVulnSummary(self,projectId=None,language=None,level=None,order=None,projectName=None,status=None,type=None,url=None,versionId=None,statusId=None):
+        data = {}
+        if projectId is not None:
+            data["project_id"] = projectId
+        if statusId is not None:
+            data["status_id"] = statusId
         if language is not None:
             data["language"] = language
         if level is not None:

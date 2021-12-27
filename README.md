@@ -3,7 +3,7 @@
  * @Date: 2021-12-23 14:25:35
  * @version: 
  * @LastEditors: 饕餮
- * @LastEditTime: 2021-12-27 09:59:59
+ * @LastEditTime: 2021-12-27 18:36:54
  * @Description: How to use
 -->
 # DongTai-SDK-Python
@@ -67,4 +67,9 @@ dongTaiSdk.GetAgentList(page=1,pageSize=50,projectName=None,state=None,token=Non
 dongTaiSdk.GetScaDetail(scaId)
 dongTaiSdk.GetScaList(page=1,pageSize=50,keyword=None,language=None,level=None,order=None,projectId=None,projectName=None,versionId=None)
 dongTaiSdk.GetScaSummary(page=1,pageSize=50,keyword=None,language=None,level=None,order=None,projectId=None,projectName=None,versionId=None)
+```
+
+### Vuln
+```python
+dongTaiSdk.GetVulnSummary(projectId=None,language=None,level=None,order=None,projectName=None,status=None,type=None,url=None,versionId=None,statusId=None)
 ```
