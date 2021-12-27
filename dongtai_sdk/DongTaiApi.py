@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:27:00
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-25 14:55:29
+LastEditTime: 2021-12-27 13:15:27
 Description: file content
 '''
 import json,requests
@@ -184,3 +184,41 @@ class DongTaiApi:
     #组件详情
     def GetScaDetail(self,scaId):
         return self.GetResponse(f"/sca/{scaId}")
+
+    #[Vuln Function]
+    #漏洞概览
+    def GetVulnSummary(self,projectId,language=None,level=None,order=None,projectName=None,status=None,type=None,url=None,versionId=None,statusId=1):
+        data = {
+            "project_id":projectId,
+            "status_id":statusId
+        }
+        if language is not None:
+            data["language"] = language
+        if level is not None:
+            data["level"] = level
+        if order is not None:
+            data["order"] = order
+        if projectName is not None:
+            data["project_name"] = projectName
+        if versionId is not None:
+            data["version_id"] = versionId
+        if status is not None:
+            data["status"] = status
+        if type is not None:
+            data["type"] = type
+        if url is not None:
+            data["url"] = url
+        return self.GetResponse("/vuln/summary","GET",data)
+
+    #漏洞详情
+    def GetVulnDetail(self,vulnId):
+        return self.GetResponse(f"/vuln/{vulnId}")
+
+    #漏洞验证
+    def RecheckVuln(self,vulnIdList):
+        data = {
+            "ids": ",".join([str(id) for id in vulnIdList])
+        }
+        return self.GetResponse("/vul/recheck","POST",data)
+
+    
