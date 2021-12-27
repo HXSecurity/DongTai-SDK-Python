@@ -3,11 +3,11 @@ Author: 饕餮
 Date: 2021-12-24 10:57:03
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-27 10:02:24
+LastEditTime: 2021-12-27 11:38:07
 Description: Sca Object
 '''
 import json
-from .BaseObejct import BaseObject,ProjectSummary
+from .BaseObejct import BaseObject,ProjectSummary,LanguageSummary
 
 class ScaVulnReference(BaseObject):
     def __init__(self,jsonData):
@@ -63,18 +63,6 @@ class ScaVuln(BaseObject):
                 tmpObject = ScaVulnReference(tmpItem)
                 returnData.append(tmpObject)
         return returnData
-
-class ScaLanguage(BaseObject):
-    def __init__(self,jsonData):
-        self.ObjectData = jsonData
-
-    @property
-    def Language(self):
-        return self.TryGetValue("language")
-
-    @property
-    def Count(self):
-        return self.TryGetValue("count")
 
 class ScaLevel(BaseObject):
     def __init__(self,jsonData):
@@ -168,7 +156,7 @@ class ScaSummary(BaseObject):
         tmpDataList = self.TryGetValue("language")
         if tmpDataList is not None:
             for tmpData in tmpDataList:
-                tmpObject = ScaLanguage(tmpData)
+                tmpObject = LanguageSummary(tmpData)
                 returnData.append(tmpObject)
         return returnData
 

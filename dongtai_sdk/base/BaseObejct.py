@@ -3,7 +3,7 @@ Author: 饕餮
 Date: 2021-12-23 14:49:05
 version: 
 LastEditors: 饕餮
-LastEditTime: 2021-12-27 10:01:53
+LastEditTime: 2021-12-27 11:37:36
 Description: 通用基类
 '''
 import json
@@ -78,3 +78,15 @@ class ProjectSummary(BaseObject):
     @property
     def Id(self):
         return self.TryGetValue("id")
+
+class LanguageSummary(BaseObject):
+    def __init__(self,jsonData):
+        self.ObjectData = jsonData
+
+    @property
+    def Language(self):
+        return self.TryGetValue("language")
+
+    @property
+    def Count(self):
+        return self.TryGetValue("count")
